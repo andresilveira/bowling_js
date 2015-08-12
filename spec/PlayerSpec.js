@@ -1,58 +1,25 @@
 describe("Player", function() {
-  var player;
-  var song;
-
-  beforeEach(function() {
-    player = new Player();
-    song = new Song();
+  it("should be called by the name when specified", function() {
+    name = "Little John"
+    expect(new Player(1, name).name).toEqual(name);
   });
-
-  it("should be able to play a Song", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
-
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
+  
+  it("should be called 'Unknown' when not known", function() {
+    expect(new Player(1).name).toEqual('Unknown');
   });
-
-  describe("when song has been paused", function() {
-    beforeEach(function() {
-      player.play(song);
-      player.pause();
-    });
-
-    it("should indicate that the song is currently paused", function() {
-      expect(player.isPlaying).toBeFalsy();
-
-      // demonstrates use of 'not' with a custom matcher
-      expect(player).not.toBePlaying(song);
-    });
-
-    it("should be possible to resume", function() {
-      player.resume();
-      expect(player.isPlaying).toBeTruthy();
-      expect(player.currentlyPlayingSong).toEqual(song);
-    });
+  
+  it("should have an id", function() {
+    id = 1
+    expect(new Player(id).id).toEqual(id);
   });
-
-  // demonstrates use of spies to intercept and test method calls
-  it("tells the current song if the user has made it a favorite", function() {
-    spyOn(song, 'persistFavoriteStatus');
-
-    player.play(song);
-    player.makeFavorite();
-
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
+  
+  it("should not be created without an id", function() {
+    expect(function(){
+      new Player();
+    }).toThrowError("a Player requires an id");
   });
-
-  //demonstrates use of expected exceptions
-  describe("#resume", function() {
-    it("should throw an exception if song is already playing", function() {
-      player.play(song);
-
-      expect(function() {
-        player.resume();
-      }).toThrowError("song is already playing");
-    });
+  
+  it("should have a score of 0 when created", function() {
+    expect(new Player(1).score).toEqual(0);
   });
 });

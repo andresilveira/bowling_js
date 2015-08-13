@@ -1,6 +1,6 @@
 describe("Player", function() {
   it("should be called by the name when specified", function() {
-    name = "Little John"
+    var name = "Little John";
     expect(new Player(1, name).name).toEqual(name);
   });
   
@@ -9,7 +9,7 @@ describe("Player", function() {
   });
   
   it("should have an id", function() {
-    id = 1
+    var id = 1;
     expect(new Player(id).id).toEqual(id);
   });
   

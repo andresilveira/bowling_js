@@ -10,6 +10,6 @@ function Player(id, name) {
   this.score = 0;
 }
 
-User.prototype = {
-  constructor: User
+Player.prototype = {
+  constructor: Player
 }

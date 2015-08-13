@@ -1,6 +1,5 @@
-describe("Collection", function() {
-  var collection;
-  var element;
+describe("Collection", function () {
+  var collection, element = null;
   
   beforeEach(function(){
     collection = new Collection();
@@ -8,19 +7,19 @@ describe("Collection", function() {
   
   describe(".all", function() {
     it("should return an array", function() {
-      expect(collection.all).toEqual([]);
+      expect(collection.all()).toEqual([]);
     });
   });
   
   describe(".add", function() {
     it("should add a single object", function() {
-      collection.add({id: 1})
-      expect(collection.all).toEqual([{id: 1}]);
+      collection.add({id: 1});
+      expect(collection.all()).toEqual([{id: 1}]);
     });
     
     it("should add an array of objects", function() {
-      collection.add([{id: 1}, {id: 2}])
-      expect(collection.all).toEqual([{id: 1}, {id: 2}]);
+      collection.add([{id: 1}, {id: 2}]);
+      expect(collection.all()).toEqual([{id: 1}, {id: 2}]);
     });
   });
   
@@ -30,14 +29,15 @@ describe("Collection", function() {
     });
     
     it("remove the element and return it", function() {
-      element = collection.remove({id: 1})
-      expect(collection.all).not.toContain([{id: 1}]);
-      expect(element).toEqual({id: 1});
+      collection.remove(1, function(element){
+        expect(collection.all()).not.toContain([{id: 1}]);
+        expect(element).toEqual({id: 1});
+      });
     });
     
     it("should return null if element is not found", function() {
-      element = collection.remove({id: 3})
-      expect(element).toBeNull();
+      element = collection.remove(3);
+      expect(element).not.toBeDefined();
     });
   });
   
@@ -47,19 +47,23 @@ describe("Collection", function() {
     });
     
     it("should find an element with a given id", function() {
-      expect(collection.find(1)).toEqual([{id: 1}]);
+      expect(collection.find(1)).toEqual({id: 1});
     });
     
     it("should return an empty array when the element is not found", function() {
-      expect(collection.find(3)).toEqual([]);
+      expect(collection.find(3)).not.toBeDefined();
     });
     
-    it("should find an element by a given attribute", function() {
-      expect(collection.find_by("id", 1)).toEqual([{id: 1}]);
+    it("should find an element by a given attribute, ", function() {
+      collection.find_by({id: 1}, function(elements){
+        expect(elements).toEqual([{id: 1}]);
+      });
     });
     
     it("should return an empty array when the element is not found", function() {
-      expect(collection.find_by("id", 1)).toEqual([]);
+      collection.find_by({id: 3}, function(elements){
+        expect(elements).toEqual([]);
+      });
     });
   });
   

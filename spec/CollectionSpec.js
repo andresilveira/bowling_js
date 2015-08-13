@@ -1,4 +1,6 @@
 describe("Collection", function () {
+  'use strict';
+  
   var collection, element = null;
   
   beforeEach(function(){

@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
 function Player(id, name) {
   if( typeof id == 'undefined' ){
-    throw TypeError('a Player requires an id');
+    throw new TypeError('a Player requires an id');
   }
   
   this.id = id;
@@ -12,4 +12,4 @@ function Player(id, name) {
 
 Player.prototype = {
   constructor: Player
-}
+};

@@ -1,4 +1,6 @@
 describe("Player", function() {
+  'use strict'; 
+  
   it("should be called by the name when specified", function() {
     var name = "Little John";
     expect(new Player(1, name).name).toEqual(name);

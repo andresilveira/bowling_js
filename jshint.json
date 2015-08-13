@@ -13,6 +13,8 @@
       "inject",
       "expect",
       "spyOn",
+      "Collection",
+      "Player"
   ],
-  "strict": false 
+  "globalstrict": true
 }

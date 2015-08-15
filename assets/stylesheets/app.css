@@ -1,0 +1,21 @@
+.clear{
+  clear: both;
+}
+
+.hide{
+  display: none;
+}
+
+button.btn-default {
+  background-color: #5499CC;
+  border: 1px solid #3E7299;
+  text-align: center;
+  color: #fff;
+  padding: 5px;
+  font-size: 16px;
+  min-width: 30px;
+}
+
+button.btn-default:hover {
+  background-color: #3E7299;
+}

@@ -1,5 +1,7 @@
-object{
+object.frame{
   margin-left: -5px;
+  width: 100px;
+  height: 100px;
 }
 .frame{
   enable-background:new 0 0 100 100;

@@ -1,3 +1,5 @@
+/*global window */
+
 'use strict';
 
 function Game(players) {
@@ -12,3 +14,7 @@ Game.prototype = {
     this.players.add(player);
   }
 };
+
+// Export to window
+window.app = window.app || {};
+window.app.Game = Game;

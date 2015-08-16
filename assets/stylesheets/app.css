@@ -3,7 +3,7 @@
 }
 
 .hide{
-  display: none;
+  visibility: hidden;
 }
 
 button.btn-default {

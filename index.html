@@ -10,85 +10,24 @@
   <link rel="stylesheet" href="assets/stylesheets/frame.css" type="text/css" media="screen">
 </head>
 <body>
-  <div id="app">
-    <div class='player' id="player1">
-      <div class="pannel">
-        <div class='name'>
-          <p>Player 1</p>
-        </div>
-        <div class="play">
-          <ul>
-            <li><button class='btn-default' name='pins-1'>1</button></li>
-            <li><button class='btn-default' name='pins-2'>2</button></li>
-            <li><button class='btn-default' name='pins-3'>3</button></li>
-            <li><button class='btn-default' name='pins-4'>4</button></li>
-            <li><button class='btn-default' name='pins-5'>5</button></li>
-            <li><button class='btn-default' name='pins-6'>6</button></li>
-            <li><button class='btn-default' name='pins-7'>7</button></li>
-            <li><button class='btn-default' name='pins-8'>8</button></li>
-            <li><button class='btn-default' name='pins-9'>9</button></li>
-            <li><button class='btn-default' name='pins-10'>10</button></li>
-          </ul>
-        </div>
-        <div class="clear"></div>
-      </div>
-      <div class='frames'>
-        <object id="frame-1-1" type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-      </div>
+  <div id="game">
+    <div id="players">
     </div>
-    
-    
-    <div class='player' id="player2">
-      <div class="pannel">
-        <div class='name'>
-          <p>Player 2</p>
-        </div>
-        <div class="play hide">
-          <ul>
-            <li><button class='btn-default' name='pins-1'>1</button></li>
-            <li><button class='btn-default' name='pins-2'>2</button></li>
-            <li><button class='btn-default' name='pins-3'>3</button></li>
-            <li><button class='btn-default' name='pins-4'>4</button></li>
-            <li><button class='btn-default' name='pins-5'>5</button></li>
-            <li><button class='btn-default' name='pins-6'>6</button></li>
-            <li><button class='btn-default' name='pins-7'>7</button></li>
-            <li><button class='btn-default' name='pins-8'>8</button></li>
-            <li><button class='btn-default' name='pins-9'>9</button></li>
-            <li><button class='btn-default' name='pins-10'>10</button></li>
-          </ul>
-        </div>
-        <div class="clear"></div>
-      </div>
-      <div class='frames'>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-        <object type="image/svg+xml" data="./assets/images/frame.svg" width=100 height=100>This browser doesn't support svg :(</object>
-      </div>
-    </div>
-    
-    <a href="#addPlayer">+ Add a player</a> Or
-    <button class='btn-default' name='startGame'>Let the Game begin!</button>
-  </div>
+    <a href="#addPlayer" id="add-player">+ Add a player</a> Or
+    <button class="btn-default" name="startGame">Let the Game begin!</button>
+  <div>
+  
   
   <script src="src/Collection.js"></script>
+  <script src="src/Helpers.js"></script>
+  <script src="src/Template.js"></script>
   
   <script src="src/Player.js"></script>
   <script src="src/Game.js"></script>
+  <script src="src/GameController.js"></script>
+  <script src="src/GameView.js"></script>
+  <script src="src/GameTemplate.js"></script>
+  <script src="src/PlayerTemplate.js"></script>
+  <script src="src/app.js"></script>
 </body>
 </html>

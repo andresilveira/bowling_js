@@ -51,8 +51,8 @@ PlayerTemplate.prototype.show = function (data) {
   var view = '';
   var template = this.defaultTemplate;
 
-  template = template.replace('{{id}}', data.id);
-  template = template.replace('{{name}}', escape(data.name));
+  template = template.replace(/\{\{id\}\}/g, data.id);
+  template = template.replace(/\{\{name\}\}/g, escape(data.name));
 
   view = view + template;
 

@@ -6,19 +6,13 @@ describe("Player", function() {
     expect(new Player(1, name).name).toEqual(name);
   });
   
-  it("should be called 'Unknown' when not known", function() {
-    expect(new Player(1).name).toEqual('Unknown');
+  it("should be called 'Player id' when not known", function() {
+    expect(new Player(1).name).toEqual('Player 1');
   });
   
   it("should have an id", function() {
     var id = 1;
     expect(new Player(id).id).toEqual(id);
-  });
-  
-  it("should not be created without an id", function() {
-    expect(function(){
-      new Player();
-    }).toThrowError("a Player requires an id");
   });
   
   it("should have a score of 0 when created", function() {

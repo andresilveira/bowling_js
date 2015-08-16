@@ -1,15 +1,18 @@
 'use strict';
 
 function Player(id, name) {
-  if( typeof id == 'undefined' ){
-    throw new TypeError('a Player requires an id');
-  }
-  
   this.id = id;
-  this.name = name || 'Unknown';
+  this.name = name || 'Player ' + id;
   this.score = 0;
 }
 
 Player.prototype = {
-  constructor: Player
+  constructor: Player,
+  defaultName: function(){
+    this.name = name || 'Player ' + id;
+  }
 };
+
+// Export to window
+window.app = window.app || {};
+window.app.Player = Player;

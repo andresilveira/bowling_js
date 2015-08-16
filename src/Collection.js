@@ -1,10 +1,8 @@
 'use strict';
 
-// TODO: 
-//  * consider make Collection inherit from Array http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/
-
 function Collection (element_or_elements){
   this._collection = {};
+  this.currentId = 1;
 
   if (element_or_elements){
    this.add(element_or_elements); 
@@ -20,25 +18,30 @@ Collection.prototype = {
   },
   
   add: function (element_or_elements, callback){
-    callback = callback || function () {};
-    
     if( element_or_elements instanceof Array ){  // need some duck typing here...
       var length = element_or_elements.length;
+      
       for (var i = 0; i < length; i++) {
-        callback.call(this, this._add(element_or_elements[i]));
+        this._add(element_or_elements[i], callback);
       }
-    } else {
-      callback.call(this, this._add(element_or_elements));
+    }
+    else {
+      this._add(element_or_elements, callback);
     }
   },
   
   _add: function (element, callback){
-    if( typeof element.id == 'undefined' ){
-      throw new TypeError('an element requires an id to be added');
-    }
     callback = callback || function () {};
-
+    
+    element.id = this.currentId;
     this._collection[element.id] = element;
+    this.incrementCurrentId();
+    
+    callback.call(this, element);
+  },
+  // simulates the behaviour from SQL auto increment
+  incrementCurrentId: function () {
+    this.currentId++;
   },
   
   count: function () {

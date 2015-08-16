@@ -10,8 +10,8 @@ function Game(players) {
 
 Game.prototype = {
   constructor: Game,
-  add_player: function(player){ 
-    this.players.add(player);
+  add_player: function(player, callback){ 
+    this.players.add(player, callback);
   }
 };
 

@@ -15,23 +15,22 @@ function GameController(model, view) {
   self.view = view;
 
   self.view.bind('addPlayer', function () {
-    self.addPlayer();
+    var player = new Player(self.model.players.currentId);
+    self.model.add_player(player, function(stored_player){
+      self.addPlayer(stored_player);
+    });
   });
 }
 
 GameController.prototype = {
   constructor: GameController,
   
-  setView: function (view) {
-    this.view.render(view);
+  setView: function (action) {
+    this.view.render(action);
   },
   
-  addPlayer: function () {
-    var self = this;
-
-    self.model.create(function () {
-      self.view.render('newPlayer');
-    });
+  addPlayer: function (player) {
+    this.view.render('addPlayer', player);
   }
 };
 

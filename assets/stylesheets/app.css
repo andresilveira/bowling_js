@@ -1,3 +1,7 @@
+body{
+  font-family: sans-serif;
+}
+
 .clear{
   clear: both;
 }
@@ -18,4 +22,9 @@ button.btn-default {
 
 button.btn-default:hover {
   background-color: #3E7299;
+}
+
+h1{
+  font-size: 24px;
+  padding: 10px 0px;
 }

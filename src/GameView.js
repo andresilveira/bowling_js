@@ -1,9 +1,9 @@
-/*global qs, $on, window */
+/*global qs, $on, window, PlayerTemplate */
 
 'use strict';
 
-function GameView(template) {
-  this.template = template;
+function GameView() {
+  this.playerTemplate = new PlayerTemplate();
 
   this.$game = qs('#game');
   this.$players = qs('#players');
@@ -16,8 +16,8 @@ GameView.prototype = {
   render: function (viewCmd, parameter) {
     var self = this;
     var viewCommands = {
-      showGame: function () {
-        self.$game.innerHTML = self.template.show(parameter);
+      addPlayer: function () {
+        self.$players.innerHTML += self.playerTemplate.show(parameter);
       }
     };
 
@@ -27,7 +27,7 @@ GameView.prototype = {
   bind: function (event, handler) {
     var self = this;
     if (event === 'addPlayer') {
-      $on(self.$addPlayer, 'click', function () {
+      $delegate(this.$game, '#add-player', 'click', function () {
         handler();
       });
     }

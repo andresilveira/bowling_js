@@ -8,6 +8,7 @@ function GameView() {
 
   this.$game = qs('#game');
   this.$players = qs('#players');
+  this.$currentPlayer = null;
   this.$addPlayer = qs('#add-player');
   this.$startGame = qs('[name = "startGame"]');
   this.$newGameControls = qs('#new-game-controls')
@@ -27,8 +28,13 @@ GameView.prototype = {
       },
       updateFrame: function(){
         var frame = parameter;
+        
         var $frame = qs('.player[data-id="'+frame.playerId+'"] .frame[data-id="'+frame.id+'"]');
         $frame.outerHTML = self.frameTemplate.show(frame);
+        
+        if(frame.full()){
+          self._setUpNextPlayer();
+        }
       }
     };
 
@@ -36,9 +42,31 @@ GameView.prototype = {
   },
   
   _startGame: function () {
-    var playButtons = qsa('.play');
-    $show(playButtons[0]);
+    this._initPlayer();
     $hide(this.$newGameControls);
+  },
+  
+  _setUpNextPlayer: function () {
+    this._setUpPlayer(this._nextPlayer());
+  },
+  
+  _nextPlayer: function (){
+    this.$currentPlayer = this.$currentPlayer.nextElementSibling || qs('.player');
+    return this.$currentPlayer;
+  },
+  
+  _initPlayer: function () {
+    this.$currentPlayer = qs('.player');
+    $addClass(this.$currentPlayer, 'current');
+    this._setUpPlayer(this.$currentPlayer);
+  },
+  
+  _setUpPlayer: function ($player) {
+    $hide(qs('.player.current .play'));
+    $removeClass(qs('.player.current'), 'current');
+    
+    $addClass($player, 'current');
+    $show(qs('.play', $player));
   },
   
   bind: function (event, handler) {

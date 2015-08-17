@@ -53,7 +53,7 @@ Frame.prototype = {
     else {
       this.total = this.rows.reduce(function(a, b) {
         return parseInt(a) + parseInt(b);
-      });
+      })
     }
   },
   

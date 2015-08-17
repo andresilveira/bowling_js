@@ -13,6 +13,8 @@ function Player(id, name) {
   }
   this.frames = new Collection(frames);
   this._currentFrame = 1;
+  this._strikes = []; // [ {frame: Frame, lastRows: [1, 5]} ]
+  this._spares = [];  // [ {frame: Frame, lastRows: [5]} ]
 }
 
 Player.prototype = {
@@ -30,8 +32,22 @@ Player.prototype = {
   },
   
   _markScore(frame, pins){
-    // a strike
+    // check for the previous strikes and spares
+    // update the score on the frames which were a strike
+    // pop the ones updated
+    
+    // mark the current frame
     frame.knock(pins);
+    
+    // add the frame to a stack if strike or spare
+    if(frame.isStrike){
+      this._strikes.push({frame: frame, lastTwoRows: []});
+    }
+    else if(frame.isSpare){
+      this._spares.push({frame: frame, lastRow: []});
+    }
+    
+    // move to the next frame
     this._nextFrame(frame);
     return frame;
   },

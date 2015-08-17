@@ -20,6 +20,10 @@ function GameController(model, view) {
       self.addPlayer(stored_player);
     });
   });
+  
+  self.view.bind('startGame', function() {
+    self.startGame();
+  });
 }
 
 GameController.prototype = {
@@ -31,6 +35,10 @@ GameController.prototype = {
   
   addPlayer: function (player) {
     this.view.render('addPlayer', player);
+  },
+  
+  startGame: function () {
+    this.view.render('startGame');
   }
 };
 

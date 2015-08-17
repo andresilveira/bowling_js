@@ -44,4 +44,12 @@
     }
     return window.$parent(element.parentNode, tagName);
   };
+  
+  window.$hide = function (element) {
+    element.className += ' hide';
+  }
+  
+  window.$show = function (element) {
+    element.className = element.className.replace('hide', '');
+  }
 })(window);

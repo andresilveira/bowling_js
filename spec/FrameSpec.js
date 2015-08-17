@@ -19,14 +19,6 @@ describe("Frame", function() {
     });
   });
   
-  describe(".currentRow", function () {
-    it("should be the size of rows + 1", function () {
-      expect(frame.currentRow()).toEqual(1);
-      frame.rows.push(1);
-      expect(frame.currentRow()).toEqual(2);
-    });
-  });
-  
   describe(".knock", function () {
     it("should populate the current row with the number of knocked pins", function () {
       var knockedPins = 5;
@@ -37,10 +29,10 @@ describe("Frame", function() {
   
   describe(".updateTotal()", function () {
     it("should update the total", function () {
-      var total = 5;
-      frame.updateTotal(total);
+      frame.rows = [1, 5]
+      frame.updateTotal();
       
-      expect(frame.total).toEqual(total);
+      expect(frame.total).toEqual(6);
     });
   });
 });

@@ -7,7 +7,7 @@ function Frame(id, playerId, rows, total) {
   this.id = id;
   this.playerId = playerId;
   this.rows = rows || [];
-  this.total = total;
+  this.total = total || 0;
   this.isStrike = false;
   this.isSpare = false;
 }
@@ -40,6 +40,17 @@ Frame.prototype = {
     }
     else {
       this.rows.push(pins);
+      if(this.full()){
+        this.updateTotal();
+      }
+    }
+  },
+  
+  updateTotal: function () {
+    if(this.isStrike || this.isSpare){
+      this.total = "";
+    }
+    else {
       this.total = this.rows.reduce(function(a, b) {
         return parseInt(a) + parseInt(b);
       });
@@ -58,10 +69,6 @@ Frame.prototype = {
   
   full: function () {
     return this.isStrike || this.isSpare || this.rows.length == Frame._NUMBER_OF_ROWS ;
-  },
-  
-  updateTotal: function (newTotal) {
-    this.total = newTotal;
   }
 };
 

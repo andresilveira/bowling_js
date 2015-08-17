@@ -10,7 +10,7 @@ body{
   visibility: hidden;
 }
 
-button.btn-default {
+button.btn-default, input[type='button'].btn-default {
   background-color: #5499CC;
   border: 1px solid #3E7299;
   text-align: center;
@@ -20,7 +20,7 @@ button.btn-default {
   min-width: 30px;
 }
 
-button.btn-default:hover {
+button.btn-default:hover, input[type='button'].btn-default:hover {
   background-color: #3E7299;
 }
 

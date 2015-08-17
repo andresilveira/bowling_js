@@ -16,18 +16,12 @@ function PlayerTemplate() {
     +     '</div>'
     +     '<div class="play hide">'
     // TODO: refactor the play list into a loop
-    +     '  <ul>'
-    +     '    <li><button class="btn-default" name="pins-1">1</button></li>'
-    +     '    <li><button class="btn-default" name="pins-2">2</button></li>'
-    +     '    <li><button class="btn-default" name="pins-3">3</button></li>'
-    +     '    <li><button class="btn-default" name="pins-4">4</button></li>'
-    +     '    <li><button class="btn-default" name="pins-5">5</button></li>'
-    +     '    <li><button class="btn-default" name="pins-6">6</button></li>'
-    +     '    <li><button class="btn-default" name="pins-7">7</button></li>'
-    +     '    <li><button class="btn-default" name="pins-8">8</button></li>'
-    +     '    <li><button class="btn-default" name="pins-9">9</button></li>'
-    +     '    <li><button class="btn-default" name="pins-10">10</button></li>'
-    +     '  </ul>'
+    +     '  <ul>';
+          for(var i=0; i<=Frame._NUMBER_OF_PINS; i++){
+            template += '    <li><input type="button" class="pins btn-default" data-player-id="{{id}}" value="'+(i)+'"></li>'
+          }
+    template +=
+         '  </ul>'
     +     '</div>'
     +     '<div class="clear"></div>'
     +   '</div>'

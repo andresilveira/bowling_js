@@ -24,6 +24,10 @@ function GameController(model, view) {
   self.view.bind('startGame', function() {
     self.startGame();
   });
+  
+  self.view.bind('play', function (parameters) {
+    self.play(parameters.playerId, parameters.pins);
+  })
 }
 
 GameController.prototype = {
@@ -39,6 +43,12 @@ GameController.prototype = {
   
   startGame: function () {
     this.view.render('startGame');
+  },
+  
+  play: function (playerId, pins) {
+    var player = this.model.players.find(playerId);
+    var frame = player.play(pins);
+    this.view.render('updateFrame', frame);
   }
 };
 

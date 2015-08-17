@@ -4,6 +4,7 @@
 
 function GameView() {
   this.playerTemplate = new PlayerTemplate();
+  this.frameTemplate = new FrameTemplate();
 
   this.$game = qs('#game');
   this.$players = qs('#players');
@@ -23,6 +24,11 @@ GameView.prototype = {
       },
       startGame: function () {
         self._startGame();
+      },
+      updateFrame: function(){
+        var frame = parameter;
+        var $frame = qs('.player[data-id="'+frame.playerId+'"] .frame[data-id="'+frame.id+'"]');
+        $frame.outerHTML = self.frameTemplate.show(frame);
       }
     };
 
@@ -38,13 +44,18 @@ GameView.prototype = {
   bind: function (event, handler) {
     var self = this;
     if (event === 'addPlayer') {
-      $delegate(this.$game, '#add-player', 'click', function () {
+      $on(this.$addPlayer, 'click', function () {
+        handler();
+      })
+    }
+    else if(event === 'startGame'){
+      $on(this.$startGame, 'click', function () {
         handler();
       });
     }
-    else if(event === 'startGame'){
-      $delegate(this.$game, '[name = "startGame"]', 'click', function () {
-        handler();
+    else if(event === 'play'){
+      $delegate(this.$players, 'input.pins', 'click', function () {
+        handler({playerId: this.dataset.playerId, pins: this.value});
       });
     }
   }

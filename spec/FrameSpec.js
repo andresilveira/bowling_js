@@ -10,7 +10,7 @@ describe("Frame", function() {
   });
   
   it("should have a maximum (number of pins to be knocked)", function () {
-    expect(frame.maximum).toEqual(frame._NUMBER_OF_PINS);
+    expect(frame.maximum).toEqual(Frame._NUMBER_OF_PINS);
   });
   
   describe(".rows", function () {

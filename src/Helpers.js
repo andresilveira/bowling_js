@@ -45,11 +45,20 @@
     return window.$parent(element.parentNode, tagName);
   };
   
+  window.$addClass = function (element, className) {
+    element.classList.add(className);
+  }
+  
+  window.$removeClass = function (element, className) {
+    element.classList.remove(className);
+  }
+  
   window.$hide = function (element) {
-    element.className += ' hide';
+    window.$addClass(element, 'hide');
   }
   
   window.$show = function (element) {
-    element.className = element.className.replace('hide', '');
+    window.$removeClass(element, 'hide');
   }
+  
 })(window);

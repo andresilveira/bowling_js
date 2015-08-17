@@ -5,51 +5,49 @@
 
 function PlayerTemplate() {
   Template.call(this);
+  this.frameTemplate = new app.FrameTemplate();
   
-  this.defaultTemplate
-  = '<div class="player" data-id="{{id}}">'
-  +   '<div class="pannel">'
-  +     '<div class="name">'
-  +     '  <p>{{name}}</p>'
-  +     '</div>'
-  +     '<div class="play hide">'
-  // TODO: refactor the play list into a loop
-  +     '  <ul>'
-  +     '    <li><button class="btn-default" name="pins-1">1</button></li>'
-  +     '    <li><button class="btn-default" name="pins-2">2</button></li>'
-  +     '    <li><button class="btn-default" name="pins-3">3</button></li>'
-  +     '    <li><button class="btn-default" name="pins-4">4</button></li>'
-  +     '    <li><button class="btn-default" name="pins-5">5</button></li>'
-  +     '    <li><button class="btn-default" name="pins-6">6</button></li>'
-  +     '    <li><button class="btn-default" name="pins-7">7</button></li>'
-  +     '    <li><button class="btn-default" name="pins-8">8</button></li>'
-  +     '    <li><button class="btn-default" name="pins-9">9</button></li>'
-  +     '    <li><button class="btn-default" name="pins-10">10</button></li>'
-  +     '  </ul>'
-  +     '</div>'
-  +     '<div class="clear"></div>'
-  +   '</div>'
-  // TODO: refactor the frames into a loop
-  +   '<div class="frames">'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg" >This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <object data-frame-id=1 data-player-id="{{id}}" class="frame" type="image/svg+xml" data="./assets/images/frame.svg">This browser doesn\'t support svg :(</object>'
-  +   '  <div class="clear"></div>'
-  +   '</div>'
-  + '</div>';
+  this.defaultTemplate = function(player){
+    var template = 
+    '<div class="player" data-id="{{id}}">'
+    +   '<div class="pannel">'
+    +     '<div class="name">'
+    +     '  <p>{{name}}</p>'
+    +     '</div>'
+    +     '<div class="play hide">'
+    // TODO: refactor the play list into a loop
+    +     '  <ul>'
+    +     '    <li><button class="btn-default" name="pins-1">1</button></li>'
+    +     '    <li><button class="btn-default" name="pins-2">2</button></li>'
+    +     '    <li><button class="btn-default" name="pins-3">3</button></li>'
+    +     '    <li><button class="btn-default" name="pins-4">4</button></li>'
+    +     '    <li><button class="btn-default" name="pins-5">5</button></li>'
+    +     '    <li><button class="btn-default" name="pins-6">6</button></li>'
+    +     '    <li><button class="btn-default" name="pins-7">7</button></li>'
+    +     '    <li><button class="btn-default" name="pins-8">8</button></li>'
+    +     '    <li><button class="btn-default" name="pins-9">9</button></li>'
+    +     '    <li><button class="btn-default" name="pins-10">10</button></li>'
+    +     '  </ul>'
+    +     '</div>'
+    +     '<div class="clear"></div>'
+    +   '</div>'
+    +   '<div class="frames">';
+          for(var frame of player.frames.all()){
+            template += this.frameTemplate.show(frame);
+          }
+    template +=
+          '<div class="clear"></div>'
+    +   '</div>'
+    + '</div>';
+    return template;
+  }
+  
 }
 
 PlayerTemplate.prototype.show = function (data) {
 
   var view = '';
-  var template = this.defaultTemplate;
+  var template = this.defaultTemplate(data);
 
   template = template.replace(/\{\{id\}\}/g, data.id);
   template = template.replace(/\{\{name\}\}/g, escape(data.name));

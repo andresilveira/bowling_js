@@ -1,3 +1,4 @@
+/*global window */
 'use strict';
 
 function Frame(id) {
@@ -30,3 +31,6 @@ Frame.prototype = {
     this.total = newTotal;
   }
 };
+
+window.app = window.app || {};
+window.app.Frame = Frame;

@@ -1,0 +1,30 @@
+body{
+  font-family: sans-serif;
+}
+
+.clear{
+  clear: both;
+}
+
+.hide{
+  visibility: hidden;
+}
+
+button.btn-default, input[type='button'].btn-default {
+  background-color: #5499CC;
+  border: 1px solid #3E7299;
+  text-align: center;
+  color: #fff;
+  padding: 5px;
+  font-size: 16px;
+  min-width: 30px;
+}
+
+button.btn-default:hover, input[type='button'].btn-default:hover {
+  background-color: #3E7299;
+}
+
+h1{
+  font-size: 24px;
+  padding: 10px 0px;
+}

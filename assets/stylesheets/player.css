@@ -1,0 +1,22 @@
+.player{
+  padding: 10px 10px 10px 0px;
+}
+
+.pannel{
+  padding: 10px 10px 10px 0px;
+}
+
+.name{
+  float: left;
+  padding: 0px 10px;
+}
+
+.play ul li{
+  display: block;
+  float: left;
+  padding: 0px 4px;
+}
+
+.frames{
+  clear: both;
+}

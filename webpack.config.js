@@ -14,5 +14,6 @@ module.exports = {
         query: { cacheDirectory: true }
       }
     ]
-  }
+  },
+  devtool: 'source-map'
 };

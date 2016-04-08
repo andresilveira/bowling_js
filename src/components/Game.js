@@ -6,7 +6,7 @@ const Game = () => (
     <h1>BowlingJs</h1>
     <ul className="players">
       <li>
-        <Player />
+        <Player name="Player One" />
       </li>
     </ul>
   </div>

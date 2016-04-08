@@ -5,6 +5,15 @@ td {
   vertical-align: middle;
 }
 
+table {
+  display: inline-block;
+  border-right: none;
+}
+
+table:last-child {
+  border-right: 1px solid black;
+}
+
 td {
   width: 2em;
   height: 1em;

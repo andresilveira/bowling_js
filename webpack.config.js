@@ -1,9 +1,9 @@
 module.exports = {
-  context: __dirname + "/src",
-  entry: "./index.js",
+  entry: './src/index.js',
   output: {
-    path: __dirname + "/dist",
-    filename: "bundle.js"
+    path: __dirname,
+    publicPath: '/dist/',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -14,6 +14,5 @@ module.exports = {
         query: { cacheDirectory: true }
       }
     ]
-  },
-  devtool: 'source-map'
+  }
 };
